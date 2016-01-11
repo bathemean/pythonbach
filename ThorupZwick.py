@@ -11,7 +11,11 @@ class ThorupZwick(object):
 
         self.nonrand_partitions()
         print "Partitions: " + str(self.A)
-        self.find_dists(2)
+
+        delta = {}
+        delta[2] = self.find_dists(2)
+        delta[3] = self.find_dists(3)
+        self.grow_shortest_tree(2, delta)
 
     def nonrand_partitions(self):
         V = self.G.get_vertices()
@@ -67,7 +71,7 @@ class ThorupZwick(object):
 
         return None
 
-    def find_dists(self,i):
+    def find_dists(self, i):
         # Add source vertex
         self.G.add_vertex('0')
         for w in self.A[i]:
@@ -84,11 +88,16 @@ class ThorupZwick(object):
 
         # Cleanup the graph
         self.G.remove_vertex('0')
-
         return delta
 
-    def grow_shortest_tree(i, delta):
-        pass
+    def grow_shortest_tree(self, i, delta):
+        subset = self.complement_lists(self.A[i], self.A[i+1])
+        print subset
+        for w in subset:
+            print "i+1: " + str(delta[i+1])
+            new_delta = Dijkstra(self.G.get_graph(), w, limit=delta[i+1])
+            print Dijkstra(self.G.get_graph(), w)
+            print new_delta
 
 if __name__ == '__main__':
     G = Graph()
