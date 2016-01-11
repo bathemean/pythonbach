@@ -1,3 +1,4 @@
+from __future__ import division
 import operator
 from Dijkstra import Dijkstra
 from Graph import Graph
@@ -49,14 +50,37 @@ class Greedy(object):
         sorted_edges = sorted(edges.items(), key=operator.itemgetter(1))
         return sorted_edges
 
-
     def find_stretch(self):
-        pass
+        already_iterated = set()
+        stretch = 0.0
+        for source in self.org_graph.get_graph().iterkeys():
+            for target in already_iterated:
+                #print "This is the target", target
+                #print already_iterated
+                if target != source:
+                    #print "yoloswarg"
+                    graph_dijk_distance, graph_dijk_preds = Dijkstra(self.org_graph, source)
+                    spanner_dijk_distance, spanner_dijk_preds = Dijkstra(self.spanner, source)
 
+                    if spanner_dijk_distance[target] == 0:
+                        print source, target
+                    if graph_dijk_distance[target] == 0:
+                        print self.org_graph.get_graph()[source][target]
+                    #print graph_dijk_distance[target]
+                    found_stretch = spanner_dijk_distance[target] / graph_dijk_distance[target]
+                    #print "Found stretch", found_stretch
+                    if found_stretch > stretch:
+                        stretch = found_stretch
+
+            already_iterated.add(source)
+        return stretch
 
 if __name__ == "__main__":
-    graph = GraphGen(4, 1, True).string_graph()
+    graph = GraphGen(100, 1, True).get_graph()
+#    print graph.get_density()
     dijk = Dijkstra(graph, "v0")
-    print dijk
     greedy = Greedy(graph, 2*2-1)
-    print greedy.spanner.get_stretch()
+    print "Spanner", greedy.spanner
+    print "Density", greedy.spanner.get_density()
+    print "Stretch", greedy.find_stretch()
+    print "Weight", greedy.spanner.get_cum_weight()

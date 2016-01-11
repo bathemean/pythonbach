@@ -20,12 +20,15 @@ class GraphGen(object):
     def gen_graph(self):
         rand = Random()
         margin = self.density * sys.maxint
-        for v in xrange(0, self.vertices):
-            v = "v" + v.__str__()
-            self.graph.add_vertex(v)
-            for u in self.graph.get_vertices():
-                if margin >= rand.randint(0, sys.maxint) and v != u:
-                    self.graph.add_edge(v, u, rand.randint(0, 999))
+
+        while not len(self.graph._V) == self.vertices:
+            self.graph = Graph()
+            for v in xrange(0, self.vertices):
+                v = "v" + v.__str__()
+                self.graph.add_vertex(v)
+                for u in self.graph.get_vertices():
+                    if margin >= rand.randint(0, sys.maxint) and v != u:
+                        self.graph.add_edge(v, u, rand.randint(1, 999))
 
     def get_graph(self):
         return self.graph

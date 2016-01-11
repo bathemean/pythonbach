@@ -1,3 +1,4 @@
+from __future__ import division
 import numpy as np
 import pprint
 
@@ -42,17 +43,29 @@ class Graph(object):
         w = self._G[source][target]
         return w
 
-    def get_stretch(self):
-        pass
-
     def get_density(self):
-        pass
+        amount = 0
+        n = len(self._V)
+        for v, edges in self._G.iteritems():
+#            print edges
+            amount += len(edges)
+        amount = amount / 2
+#        print amount, n, (2 * amount) / (n*(n-1))
+        return (2 * amount) / (n*(n-1))
 
     def get_highest_degree(self):
-        pass
+        degree = 0
+        for v, edges in self._G.iteritems():
+            if len(edges) > degree:
+                degree = len(edges)
+        return degree
 
     def get_cum_weight(self):
-        pass
+        weight = 0
+        for v, edges in self._G.iteritems():
+            weight += sum(edges.values())
+        # Divide by 2 due to every edge being counted twice
+        return weight / 2
 
     def test(self):
         return self._G
