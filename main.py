@@ -65,4 +65,8 @@ def write_to_log(alg, vertices, density, k, metrics):
 
 
 if __name__ == '__main__':
-    run_experiments()
+    #run_experiments()
+
+    G = GraphGen(200, 1.0, True).get_graph()
+    grd = Greedy(graph, 5)
+    print grd
