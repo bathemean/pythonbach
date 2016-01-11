@@ -42,7 +42,8 @@ class ThorupZwick(object):
     def partition(self):
         # Partitions
         n = len(self.V)
-        double_margin = math.pow( n/math.log(n), (-1.0)/self.k )
+        double_margin = math.pow(n/math.log(n), (-1.0)/self.k)
+        print double_margin
         margin = sys.maxint * double_margin
 
 

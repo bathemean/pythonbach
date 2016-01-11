@@ -1,3 +1,4 @@
+import os
 from GraphGen import GraphGen
 from Greedy import Greedy
 from ThorupZwick import ThorupZwick
@@ -32,7 +33,7 @@ def run_experiments():
 def run_greedy(graph, k):
     start_time = time.clock()
 
-    greedy = Greedy(graph, k)
+    greedy = Greedy(graph, 2*k-1)
     spanner = greedy.get_spanner()
 
     end_time = time.clock()
@@ -65,8 +66,8 @@ def write_to_log(alg, vertices, density, k, metrics):
 
 
 if __name__ == '__main__':
-    #run_experiments()
+    run_experiments()
 
-    G = GraphGen(200, 1.0, True).get_graph()
-    grd = Greedy(graph, 5)
-    print grd
+    #G = GraphGen(200, 1.0, True).get_graph()
+    #grd = Greedy(G, 5)
+    #print grd
