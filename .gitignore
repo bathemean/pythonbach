@@ -57,5 +57,16 @@ docs/_build/
 target/
 
 # PyCharm
+/out
+.idea/
+.idea/workspace.xml
 .idea/*
+/.idea
+*/.idea
+/.idea/
+*/.idea/*
+.idea/workspace.xml
+target
+target/*
+code.iml
 
