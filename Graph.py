@@ -82,8 +82,14 @@ class Graph(object):
         # Divide by 2 due to every edge being counted twice
         return weight / 2
 
-    def test(self):
-        return self._G
+    def get_csv_metrics(self, runtime, graph):
+        metrics = ",".join([self.get_cum_weight().__str__(),
+                            self.get_density().__str__(),
+                            self.get_highest_degree().__str__(),
+                            str(runtime),
+                            find_stretch(graph, self._G).__str__()
+                            ])
+        return metrics
 
     def __getitem__(self, item):
         return self._G[item]

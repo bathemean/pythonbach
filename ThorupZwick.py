@@ -24,11 +24,9 @@ class ThorupZwick(object):
         delta = {}
         delta[k] = self.find_dists(k)
         for i in list(reversed(range(0,k))):
-            print i
             delta[i] = self.find_dists(i)
             self.grow_shortest_tree(i, delta)
 
-            print "Spanner: " + str(self.spanner.get_graph())
 
     def nonrand_partition(self):
         V = self.G.get_vertices()
@@ -115,7 +113,6 @@ class ThorupZwick(object):
 
         for w in subset:
             new_delta, path = Dijkstra(self.G.get_graph(), w, limit=delta[i+1])
-            print "spt delt: " + str(i) + str(new_delta), str(path)
             for p in path:
                 source = p
                 target = path[p]
@@ -142,10 +139,16 @@ if __name__ == '__main__':
     TZ = ThorupZwick(G, 5)
     '''
 
-    graph = GraphGen(200, 1, True).get_graph()
+    for i in range(0, 100):
+        print i
+        graph = GraphGen(100, 1, True).get_graph()
 
-    dijk = Dijkstra(graph, "v0")
-    tz = ThorupZwick(graph, 5)
-    print "Density", tz.spanner.get_density()
-    print "Stretch", find_stretch(graph, tz.get_spanner())
-    print "Weight", tz.spanner.get_cum_weight()
+        dijk = Dijkstra(graph, "v0")
+        tz = ThorupZwick(graph, 5)
+        #print "Density", tz.spanner.get_density()
+        stretch = find_stretch(graph, tz.get_spanner())
+        print "Stretch", stretch
+        if stretch > 5:
+            print "=========="
+            break
+        #print "Weight", tz.spanner.get_cum_weight()
