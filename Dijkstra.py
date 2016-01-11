@@ -4,7 +4,7 @@
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/117228
 from priodict import priorityDictionary
 
-def Dijkstra(G,start,end=None):
+def Dijkstra(G,start,end=None, limit=None):
     """
     Find shortest paths from the  start vertex to all vertices nearer than or equal to the end.
 

@@ -29,13 +29,27 @@ class Graph(object):
         self._G[vertex] = {}
         self._V.append(vertex)
 
+    def remove_vertex(self, vertex):
+        del self._G[vertex]
+        self._V.remove(vertex)
+
+        for v in self._V:
+            self.remove_edge_if_exists(v, vertex)
+
     def add_edge(self, source, target, weight):
         self._G[source][target] = weight
         self._G[target][source] = weight
 
+    def remove_edge_if_exists(self,source, target):
+        try:
+            del self._G[source][target]
+        except Exception:
+            pass
+            #raise ValueError("Edge does not exists")
+
     def get_graph(self):
         return self._G
-        
+
     def get_vertices(self):
         return self._V
 
@@ -84,6 +98,7 @@ if __name__ == '__main__':
     G.add_vertex('3')
     G.add_vertex('4')
 
+
     G.add_edge('1','2',10)
     G.add_edge('1','3',15)
     G.add_edge('1','4',45)
@@ -91,8 +106,12 @@ if __name__ == '__main__':
     G.add_edge('2','4',50)
     G.add_edge('3','4',20)
 
+    G.add_vertex('5')
+    G.add_edge('1', '5', 1000)
+    G.remove_vertex('5')
+    pp.pprint(G.get_graph())
 
-    print G.test()['1']
+    #print G.test()['1']
     A = {'s': {'u':10, 'x':5},
     	'u': {'v':1, 'x':2},
     	'v': {'y':4},
