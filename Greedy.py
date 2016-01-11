@@ -19,10 +19,9 @@ class Greedy(object):
         self.r_factor = r
         self.spanner = Graph()
         self.make_spanner()
-        pass
 
     def make_spanner(self):
-
+        self.time_start = Time
         for edge, weight in self.sorted_edges:
             v, u = edge
             if not self.spanner.has_vertex(v):
@@ -33,7 +32,6 @@ class Greedy(object):
             dijk = Dijkstra(self.spanner, v)
             if not u in dijk[0] or (self.r_factor * weight) < dijk[0][u]:
                 self.spanner.add_edge(v, u, weight)
-        pass
 
     def to_sorted_edges(self,):
         """
@@ -55,10 +53,7 @@ class Greedy(object):
         stretch = 0.0
         for source in self.org_graph.get_graph().iterkeys():
             for target in already_iterated:
-                #print "This is the target", target
-                #print already_iterated
                 if target != source:
-                    #print "yoloswarg"
                     graph_dijk_distance, graph_dijk_preds = Dijkstra(self.org_graph, source)
                     spanner_dijk_distance, spanner_dijk_preds = Dijkstra(self.spanner, source)
 
@@ -75,11 +70,19 @@ class Greedy(object):
             already_iterated.add(source)
         return stretch
 
+    def get_csv_metrics(self):
+        metrics = ",".join([self.spanner.get_cum_weight().__str__(),
+                            self.spanner.get_density().__str__(),
+                            self.spanner.get_highest_degree().__str__(),
+#                            self.get_runtime(),
+                            self.find_stretch().__str__()])
+        return metrics
+
 if __name__ == "__main__":
-    graph = GraphGen(100, 1, True).get_graph()
+    graph = GraphGen(200, 1, True).get_graph()
 #    print graph.get_density()
     dijk = Dijkstra(graph, "v0")
-    greedy = Greedy(graph, 2*2-1)
+    greedy = Greedy(graph, 2*5-1)
     print "Spanner", greedy.spanner
     print "Density", greedy.spanner.get_density()
     print "Stretch", greedy.find_stretch()
