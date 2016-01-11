@@ -28,6 +28,10 @@ class Graph(object):
         self._G[vertex] = {}
         self._V.append(vertex)
 
+    def add_vertex_list(self, v_list):
+        for v in v_list:
+            self.add_vertex(v)
+
     def add_edge(self, source, target, weight):
         self._G[source][target] = weight
         self._G[target][source] = weight
