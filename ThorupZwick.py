@@ -1,6 +1,11 @@
 import math, copy, sys, random
-from Graph import Graph
+from Graph import Graph, find_stretch
 from Dijkstra import Dijkstra
+from GraphGen import GraphGen
+import numpy as np
+import pprint
+
+pp = pprint.PrettyPrinter(depth=10)
 
 class ThorupZwick(object):
 
@@ -9,15 +14,23 @@ class ThorupZwick(object):
         self.V = self.G.get_vertices()
         self.k = k
 
-        self.nonrand_partitions()
-        print "Partitions: " + str(self.A)
+        self.spanner = Graph()
+        for v in self.V:
+            self.spanner.add_vertex(v)
+
+        self.partition()
+        #pp.pprint("Partitions: " + str(self.A))
 
         delta = {}
-        delta[2] = self.find_dists(2)
-        delta[3] = self.find_dists(3)
-        self.grow_shortest_tree(2, delta)
+        delta[k] = self.find_dists(k)
+        for i in list(reversed(range(0,k))):
+            print i
+            delta[i] = self.find_dists(i)
+            self.grow_shortest_tree(i, delta)
 
-    def nonrand_partitions(self):
+            print "Spanner: " + str(self.spanner.get_graph())
+
+    def nonrand_partition(self):
         V = self.G.get_vertices()
 
         self.A = {}
@@ -39,7 +52,7 @@ class ThorupZwick(object):
         self.A[0] = copy.deepcopy(self.V)
         self.A[self.k] = []
 
-        for i in range(1, self.k-1):
+        for i in range(1, self.k):
             self.A[i] = []
 
             for v in self.A[i-1]:
@@ -72,46 +85,67 @@ class ThorupZwick(object):
         return None
 
     def find_dists(self, i):
+
+        if i == self.k:
+            delta = {}
+            for v in self.V:
+                delta[v] = np.inf
+
+            return delta
+
         # Add source vertex
-        self.G.add_vertex('0')
+        self.G.add_vertex('s')
         for w in self.A[i]:
-            self.G.add_edge('0', w, 0)
+            self.G.add_edge('s', w, 0)
 
         # Elements not in A[i]
         subset = self.complement_lists(self.A[0], self.A[i])
-        print "A[2]: " + str(self.A[i])
-        print "Subs " + str(subset)
 
         # Find witnesses
-        delta, path = Dijkstra(self.G.get_graph(), '0')
+        delta, path = Dijkstra(self.G.get_graph(), 's')
         #witnesses = self.find_witnesses(i, subset, path)
 
         # Cleanup the graph
-        self.G.remove_vertex('0')
+        self.G.remove_vertex('s')
+
         return delta
 
     def grow_shortest_tree(self, i, delta):
         subset = self.complement_lists(self.A[i], self.A[i+1])
-        print subset
+
         for w in subset:
-            print "i+1: " + str(delta[i+1])
-            new_delta = Dijkstra(self.G.get_graph(), w, limit=delta[i+1])
-            print Dijkstra(self.G.get_graph(), w)
-            print new_delta
+            new_delta, path = Dijkstra(self.G.get_graph(), w, limit=delta[i+1])
+            print "spt delt: " + str(i) + str(new_delta), str(path)
+            for p in path:
+                source = p
+                target = path[p]
+
+                weight = self.G.get_edge_weight(source, target)
+                self.spanner.add_edge(source, target, weight)
+
+    def get_spanner(self):
+        return self.spanner
 
 if __name__ == '__main__':
+    '''
     G = Graph()
-
     G.add_vertex('1')
     G.add_vertex('2')
     G.add_vertex('3')
     G.add_vertex('4')
-
     G.add_edge('1','2',10)
     G.add_edge('1','3',15)
     G.add_edge('1','4',45)
     G.add_edge('2','3',30)
     G.add_edge('2','4',50)
     G.add_edge('3','4',20)
-
     TZ = ThorupZwick(G, 5)
+    '''
+
+    graph = GraphGen(200, 1, True).get_graph()
+
+    dijk = Dijkstra(graph, "v0")
+    tz = ThorupZwick(graph, 5)
+    print "Density", tz.spanner.get_density()
+    print "Stretch", find_stretch(graph, tz.get_spanner())
+    print "Weight", tz.spanner.get_cum_weight()

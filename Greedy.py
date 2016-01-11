@@ -1,7 +1,7 @@
 from __future__ import division
 import operator
 from Dijkstra import Dijkstra
-from Graph import Graph
+from Graph import Graph, find_stretch
 from GraphGen import GraphGen
 
 
@@ -21,7 +21,7 @@ class Greedy(object):
         self.make_spanner()
 
     def make_spanner(self):
-        self.time_start = Time
+
         for edge, weight in self.sorted_edges:
             v, u = edge
             if not self.spanner.has_vertex(v):
@@ -48,27 +48,7 @@ class Greedy(object):
         sorted_edges = sorted(edges.items(), key=operator.itemgetter(1))
         return sorted_edges
 
-    def find_stretch(self):
-        already_iterated = set()
-        stretch = 0.0
-        for source in self.org_graph.get_graph().iterkeys():
-            for target in already_iterated:
-                if target != source:
-                    graph_dijk_distance, graph_dijk_preds = Dijkstra(self.org_graph, source)
-                    spanner_dijk_distance, spanner_dijk_preds = Dijkstra(self.spanner, source)
 
-                    if spanner_dijk_distance[target] == 0:
-                        print source, target
-                    if graph_dijk_distance[target] == 0:
-                        print self.org_graph.get_graph()[source][target]
-                    #print graph_dijk_distance[target]
-                    found_stretch = spanner_dijk_distance[target] / graph_dijk_distance[target]
-                    #print "Found stretch", found_stretch
-                    if found_stretch > stretch:
-                        stretch = found_stretch
-
-            already_iterated.add(source)
-        return stretch
 
     def get_csv_metrics(self):
         metrics = ",".join([self.spanner.get_cum_weight().__str__(),
@@ -78,6 +58,9 @@ class Greedy(object):
                             self.find_stretch().__str__()])
         return metrics
 
+    def get_spanner(self):
+        return self.spanner
+
 if __name__ == "__main__":
     graph = GraphGen(200, 1, True).get_graph()
 #    print graph.get_density()
@@ -85,5 +68,5 @@ if __name__ == "__main__":
     greedy = Greedy(graph, 2*5-1)
     print "Spanner", greedy.spanner
     print "Density", greedy.spanner.get_density()
-    print "Stretch", greedy.find_stretch()
+    print "Stretch", find_stretch(graph, greedy.get_spanner())
     print "Weight", greedy.spanner.get_cum_weight()

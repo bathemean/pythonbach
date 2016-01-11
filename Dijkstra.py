@@ -50,7 +50,6 @@ def Dijkstra(G,start,end=None, limit=None):
                 if vwLength < D[w]:
                     raise ValueError, "Dijkstra: found better path to already-final vertex"
             elif w not in Q or vwLength < Q[w]:
-                if limit: print vwLength, limit[w]
                 if limit == None or vwLength < limit[w]:
                     Q[w] = vwLength
                     P[w] = v
