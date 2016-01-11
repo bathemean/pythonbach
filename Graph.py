@@ -32,6 +32,19 @@ class Graph(object):
         w = self._G[source][target]
         return w
 
+    def get_stretch(self):
+        pass
+
+    def get_density(self):
+        pass
+
+    def get_highest_degree(self):
+        pass
+
+    def get_cum_weight(self):
+        pass
+
+
 if __name__ == '__main__':
 
     G = Graph()
