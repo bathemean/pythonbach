@@ -1,3 +1,5 @@
+from random import Random
+import sys
 from Graph import Graph
 
 class GraphGen(object):
@@ -13,14 +15,26 @@ class GraphGen(object):
         self.density = density
         self.is_weighted = is_weighted
         self.graph = Graph()
+        self.gen_graph()
 
     def gen_graph(self):
+        rand = Random()
+        margin = self.density * sys.maxint
         for v in xrange(0, self.vertices):
             v = "v" + v.__str__()
             self.graph.add_vertex(v)
+            for u in self.graph.get_vertices():
+                if margin >= rand.randint(0, sys.maxint) and v != u:
+                    self.graph.add_edge(v, u, rand.randint(0, 999))
 
+    def get_graph(self):
+        return self.graph
 
+    def __str__(self):
+        return self.graph.__str__()
 
 
 if __name__ == '__main__':
-    print GraphGen(4, 1.0, True).gen_graph()
+    gen = GraphGen(4, 0.8, True)
+    gen.gen_graph()
+    print gen
