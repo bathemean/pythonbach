@@ -42,7 +42,6 @@ class Graph(object):
         w = self._G[source][target]
         return w
 
-<<<<<<< HEAD
     def get_stretch(self):
         pass
 
@@ -55,10 +54,8 @@ class Graph(object):
     def get_cum_weight(self):
         pass
 
-=======
     def test(self):
         return self._G
->>>>>>> f6324dd0bf3d272ac7cd8dd935e0d39bd62854d4
 
 if __name__ == '__main__':
 
