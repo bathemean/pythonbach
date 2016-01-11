@@ -33,8 +33,22 @@ class GraphGen(object):
     def __str__(self):
         return self.graph.__str__()
 
+    def string_graph(self):
+        string_graph = Graph()
+        string_graph.add_vertex("v0")
+        string_graph.add_vertex("v1")
+        string_graph.add_vertex("v2")
+        string_graph.add_vertex("v3")
+        string_graph.add_edge("v0", "v1", 410)
+        string_graph.add_edge("v0", "v2", 81)
+        string_graph.add_edge("v0", "v3", 321)
+        string_graph.add_edge("v1", "v2", 337)
+        string_graph.add_edge("v1", "v3", 125)
+        string_graph.add_edge("v2", "v3", 733)
+
+        return string_graph
 
 if __name__ == '__main__':
     gen = GraphGen(4, 0.8, True)
     gen.gen_graph()
-    print gen
+#    print gen

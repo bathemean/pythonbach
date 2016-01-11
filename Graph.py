@@ -57,6 +57,11 @@ class Graph(object):
     def test(self):
         return self._G
 
+    def __getitem__(self, item):
+        return self._G[item]
+
+    def has_vertex(self, key):
+        return self._G.has_key(key)
 if __name__ == '__main__':
 
     G = Graph()
