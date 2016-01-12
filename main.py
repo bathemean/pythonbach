@@ -16,12 +16,12 @@ def run_experiments():
         for k in ks:
             for d in densities:
                 print " == Running experiments for vertices: " + str(v) + ", k: " + str(k) + ", d: " + str(d) + ". =="
-                graph = GraphGen(v, d, True).get_graph()
 
                 write_to_log('tz', v, d, k, headers)
 
                 itera = range(0, 10)
                 for ite in itera:
+                    graph = GraphGen(v, d, True).get_graph()
                     try:
                         matrics, tz = run_tz(graph, k)
                     except KeyError:
