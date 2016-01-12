@@ -20,12 +20,6 @@ def run_experiments():
 
                 write_to_log('tz', v, d, k, headers)
 
-                if v < 450:
-                    write_to_log('greedy', v, d, k, headers)
-                    grd = run_greedy(graph, k)
-                    write_to_log('greedy', v, d, k, grd)
-                    print "Greedy: " + grd
-
                 itera = range(0, 10)
                 for ite in itera:
                     try:
@@ -36,6 +30,12 @@ def run_experiments():
                         continue
                     write_to_log('tz', v, d, k, matrics)
                     print "TZ: " + matrics
+                    # Greedy in bottom, so it's only run when TZ is run/not failing
+                    if v < 450:
+                        write_to_log('greedy', v, d, k, headers)
+                        grd = run_greedy(graph, k)
+                        write_to_log('greedy', v, d, k, grd)
+                        print "Greedy: " + grd
 
 
 def run_greedy(graph, k):
