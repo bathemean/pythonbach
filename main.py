@@ -1,4 +1,4 @@
-import os
+import os, sys
 from Dijkstra import Dijkstra
 from GraphGen import GraphGen
 from Greedy import Greedy
@@ -10,10 +10,9 @@ vertices = range(25, 1425, 25)
 densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 ks = range(2,10)
 
-def run_experiments():
+def run_experiments(k):
 
     for v in vertices:
-        for k in ks:
             for d in densities:
                 print " == Running experiments for vertices: " + str(v) + ", k: " + str(k) + ", d: " + str(d) + ". =="
 
@@ -73,9 +72,10 @@ def write_to_log(alg, vertices, density, k, metrics):
 def write_to_status_log(log_string):
     pass
 
-
 if __name__ == '__main__':
-    run_experiments()
+    k = int(sys.argv[1:][0])
+
+    run_experiments(k)
 
     #G = GraphGen(200, 1.0, True).get_graph()
     #grd = Greedy(G, 5)
