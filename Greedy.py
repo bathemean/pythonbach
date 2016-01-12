@@ -1,7 +1,7 @@
 from __future__ import division
 import operator
 from Dijkstra import Dijkstra
-from Graph import Graph, find_stretch
+from Graph import Graph
 from GraphGen import GraphGen
 
 
@@ -50,23 +50,33 @@ class Greedy(object):
 
 
 
-    def get_csv_metrics(self):
+    def get_csv_metrics(self, runtime):
         metrics = ",".join([self.spanner.get_cum_weight().__str__(),
                             self.spanner.get_density().__str__(),
                             self.spanner.get_highest_degree().__str__(),
-#                            self.get_runtime(),
+                            runtime.__str__(),
                             self.find_stretch().__str__()])
         return metrics
 
     def get_spanner(self):
         return self.spanner
 
+    def find_stretch(self):
+        already_iterated = set()
+        stretch = 0.0
+        for source in self.org_graph.get_graph().iterkeys():
+            for target in already_iterated:
+                if target != source:
+                    graph_dijk_distance, graph_dijk_preds = Dijkstra(self.org_graph, source)
+                    spanner_dijk_distance, spanner_dijk_preds = Dijkstra(self.spanner, source)
+
+                    found_stretch = spanner_dijk_distance[target] / graph_dijk_distance[target]
+
+                    if found_stretch > stretch:
+                        stretch = found_stretch
+
+            already_iterated.add(source)
+        return stretch
+
 if __name__ == "__main__":
-    graph = GraphGen(200, 1, True).get_graph()
-#    print graph.get_density()
-    dijk = Dijkstra(graph, "v0")
-    greedy = Greedy(graph, 2*5-1)
-    print "Spanner", greedy.spanner
-    print "Density", greedy.spanner.get_density()
-    print "Stretch", find_stretch(graph, greedy.get_spanner())
-    print "Weight", greedy.spanner.get_cum_weight()
+    pass

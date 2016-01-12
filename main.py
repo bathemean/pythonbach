@@ -1,11 +1,12 @@
 import os
+from Dijkstra import Dijkstra
 from GraphGen import GraphGen
 from Greedy import Greedy
 from ThorupZwick import ThorupZwick
 import time
 
 headers = 'weight,density,degree,runtime,stretch'
-vertices = range(25, 425, 25)
+vertices = range(25, 1425, 25)
 densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 ks = range(2,10)
 
@@ -17,44 +18,49 @@ def run_experiments():
                 print " == Running experiments for vertices: " + str(v) + ", k: " + str(k) + ", d: " + str(d) + ". =="
                 graph = GraphGen(v, d, True).get_graph()
 
-                write_to_log('greedy', v, d, k, headers)
                 write_to_log('tz', v, d, k, headers)
 
-                grd = run_greedy(graph, k)
-                write_to_log('greedy', v, d, k, grd)
-                print "Greedy: " + grd
+                if v < 450:
+                    write_to_log('greedy', v, d, k, headers)
+                    grd = run_greedy(graph, k)
+                    write_to_log('greedy', v, d, k, grd)
+                    print "Greedy: " + grd
 
-                for i in range(0, 11):
-                    tz = run_tz(graph, k)
-                    write_to_log('tz', v, d, k, tz)
-                    print "TZ: " + tz
+                itera = range(0, 10)
+                for ite in itera:
+                    try:
+                        matrics, tz = run_tz(graph, k)
+                    except KeyError:
+                        itera.insert(0, ite)
+                        print "Retrying TZ"
+                        continue
+                    write_to_log('tz', v, d, k, matrics)
+                    print "TZ: " + matrics
 
 
 def run_greedy(graph, k):
     start_time = time.clock()
 
     greedy = Greedy(graph, 2*k-1)
-    spanner = greedy.get_spanner()
 
     end_time = time.clock()
 
     runtime = end_time - start_time
 
-    metrics = spanner.get_csv_metrics(runtime, graph)
+    metrics = greedy.get_csv_metrics(runtime)
     return metrics
 
 def run_tz(graph, k):
     start_time = time.clock()
 
     tz = ThorupZwick(graph, k)
-    spanner = tz.get_spanner()
 
     end_time = time.clock()
 
     runtime = end_time - start_time
 
-    metrics = spanner.get_csv_metrics(runtime, graph)
-    return metrics
+    metrics = tz.get_csv_metrics(runtime)
+    return metrics, tz
 
 def write_to_log(alg, vertices, density, k, metrics):
 
@@ -63,6 +69,9 @@ def write_to_log(alg, vertices, density, k, metrics):
 
     with open(filepath + filename, 'a+') as writer:
         writer.write(metrics + '\n')
+
+def write_to_status_log(log_string):
+    pass
 
 
 if __name__ == '__main__':

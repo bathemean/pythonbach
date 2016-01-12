@@ -1,5 +1,6 @@
 from random import Random
 import sys
+from Dijkstra import Dijkstra
 from Graph import Graph
 
 class GraphGen(object):
@@ -21,7 +22,8 @@ class GraphGen(object):
         rand = Random()
         margin = self.density * sys.maxint
 
-        while not len(self.graph._V) == self.vertices:
+        coherent = False
+        while not coherent:
             self.graph = Graph()
             for v in xrange(0, self.vertices):
                 v = "v" + v.__str__()
@@ -29,6 +31,9 @@ class GraphGen(object):
                 for u in self.graph.get_vertices():
                     if margin >= rand.randint(0, sys.maxint) and v != u:
                         self.graph.add_edge(v, u, rand.randint(1, 999))
+            if len(Dijkstra(self.graph, "v0")[0]) == self.vertices:
+                coherent = True
+
 
     def get_graph(self):
         return self.graph

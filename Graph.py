@@ -62,10 +62,8 @@ class Graph(object):
         amount = 0
         n = len(self._V)
         for v, edges in self._G.iteritems():
-#            print edges
             amount += len(edges)
         amount = amount / 2
-#        print amount, n, (2 * amount) / (n*(n-1))
         return (2 * amount) / (n*(n-1))
 
     def get_highest_degree(self):
@@ -82,42 +80,12 @@ class Graph(object):
         # Divide by 2 due to every edge being counted twice
         return weight / 2
 
-    def get_csv_metrics(self, runtime, graph):
-        metrics = ",".join([self.get_cum_weight().__str__(),
-                            self.get_density().__str__(),
-                            self.get_highest_degree().__str__(),
-                            str(runtime),
-                            find_stretch(graph, self._G).__str__()
-                            ])
-        return metrics
-
     def __getitem__(self, item):
         return self._G[item]
 
     def has_vertex(self, key):
         return self._G.has_key(key)
 
-def find_stretch(graph, spanner):
-    already_iterated = set()
-    stretch = 0.0
-    for source in graph.get_graph().iterkeys():
-        for target in already_iterated:
-            if target != source:
-                graph_dijk_distance, graph_dijk_preds = Dijkstra(graph, source)
-                spanner_dijk_distance, spanner_dijk_preds = Dijkstra(spanner, source)
-
-                if spanner_dijk_distance[target] == 0:
-                    print source, target
-                if graph_dijk_distance[target] == 0:
-                    print graph.get_graph()[source][target]
-                #print graph_dijk_distance[target]
-                found_stretch = spanner_dijk_distance[target] / graph_dijk_distance[target]
-                #print "Found stretch", found_stretch
-                if found_stretch > stretch:
-                    stretch = found_stretch
-
-        already_iterated.add(source)
-    return stretch
 
 if __name__ == '__main__':
 
