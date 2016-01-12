@@ -10,13 +10,15 @@ vertices = range(25, 1425, 25)
 densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 ks = range(2,10)
 
-def run_experiments(k):
+def run_experiments(ks):
 
     for v in vertices:
+        for k in ks:
             for d in densities:
                 print " == Running experiments for vertices: " + str(v) + ", k: " + str(k) + ", d: " + str(d) + ". =="
 
                 write_to_log('tz', v, d, k, headers)
+                write_to_log('greedy', v, d, k, headers)
 
                 itera = range(0, 10)
                 for ite in itera:
@@ -31,7 +33,7 @@ def run_experiments(k):
                     print "TZ: " + matrics
                     # Greedy in bottom, so it's only run when TZ is run/not failing
                     if v < 450:
-                        write_to_log('greedy', v, d, k, headers)
+
                         grd = run_greedy(graph, k)
                         write_to_log('greedy', v, d, k, grd)
                         print "Greedy: " + grd
@@ -73,9 +75,11 @@ def write_to_status_log(log_string):
     pass
 
 if __name__ == '__main__':
-    k = int(sys.argv[1:][0])
-
-    run_experiments(k)
+    kargs = sys.argv[1:]
+    ks = [ks[0], ks[1], ks[2]]
+    ks = [int(k) for k in ks]
+    
+    run_experiments(ks)
 
     #G = GraphGen(200, 1.0, True).get_graph()
     #grd = Greedy(G, 5)
