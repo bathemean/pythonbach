@@ -14,7 +14,11 @@ filetypes = ['tz', 'greedy']
 filemetas = ['_density', '_vertices', '_k']
 
 #measurements = ['density', 'weight', 'highest degree', 'runtime']
-measurements = ['weight','mdensity','highest degree','runtime','stretch']
+
+header = ['weight','density','degree','runtime','stretch']
+measurements = ['weight','mdensity','degree','runtime','stretch']
+
+measurements_string = 'weight,mdensity,degree,runtime,stretch'
 
 def generate_filenames(meta):
     density = meta['density']
@@ -30,7 +34,7 @@ def generate_filenames(meta):
 
 def load_data_from_files(filenames):
 
-
+    print filenames
     data = {}
 
     for t in filetypes:
@@ -71,7 +75,8 @@ def average_string_readings(data):
     # Convert list entries to floats
     floatlines = []
     for line in data:
-        floatlines.append( [float(l) for l in line] )
+        if not line == header:
+            floatlines.append( [float(l) for l in line] )
 
     mean = np.mean(floatlines, axis=0)
 
@@ -187,14 +192,11 @@ def plot_points():
 
             plt.plot(x, greedy, label='Greedy')
             plt.plot(x, tz, label='TZ')
-            print "Greed", greedy
-            print tz
             max_greedy = max(greedy)
             max_tz = max(tz)
             y_lim = max_greedy if max_tz < max_greedy else max_tz
-            print int(math.ceil(y_lim))
-            print int(math.ceil(max(x)))
-            plt.axes([0, int(math.ceil(max(y_lim))), 0, int(math.ceil(max(x)))])
+
+            #plt.axes([0, int(math.ceil(max(y_lim))), 0, int(math.ceil(max(x)))])
             plt.legend()
 
 
@@ -204,6 +206,7 @@ if __name__ == '__main__':
 
     initialize_results_dicts()
 
+    '''
     for k in ks:
         for d in densities:
             for v in vertices:
@@ -216,18 +219,19 @@ if __name__ == '__main__':
                 except Exception as e:
                     break
     '''
-    meta1 = {'density': 1.0, 'vertices': 200, 'k': 1}
-    data1 = load_data_from_files(meta1)
+    meta1 = {'density': 0.5, 'vertices': 25, 'k': 2}
+    filenames = generate_filenames(meta1)
+    data1 = load_data_from_files(filenames)
     insert_into_dicts(meta1, data1)
 
-    meta2 = {'density': 1.0, 'vertices': 175, 'k': 1}
-    dicts1 = select_dicts_by_meta(meta1)
-    data2 = load_data_from_files(meta2)
-    insert_into_dicts(meta2, data2)
-    '''
+    meta1 = {'density': 0.6, 'vertices': 25, 'k': 2}
+    filenames = generate_filenames(meta1)
+    data1 = load_data_from_files(filenames)
+    insert_into_dicts(meta1, data1)
+
 
     ds = select_dicts_by_metaword('density')
+
     plot_points()
     #pp.pprint(ds)
-
-    pp.pprint(len(ds))
+    #pp.pprint(len(ds))
