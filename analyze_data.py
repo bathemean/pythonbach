@@ -5,11 +5,8 @@ import math
 
 pp = pprint.PrettyPrinter(depth=6)
 
-ks = range(2, 10)
-vertices = range(5, 9, 1)
-densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 
-filepath = 'data/'
+
 filetypes = ['tz', 'greedy']
 filemetas = ['_density', '_vertices', '_k']
 
@@ -19,6 +16,8 @@ header = ['weight','density','degree','runtime','stretch']
 measurements = ['weight','mdensity','degree','runtime','stretch']
 
 measurements_string = 'weight,mdensity,degree,runtime,stretch'
+
+datas = []
 
 def generate_filenames(meta):
     density = meta['density']
@@ -34,7 +33,7 @@ def generate_filenames(meta):
 
 def load_data_from_files(filenames):
 
-    print filenames
+
     data = {}
 
     for t in filetypes:
@@ -58,15 +57,23 @@ def load_data_from_file(filename):
     # Remove trailing newline, and split string into a list over commas
     lines = [ line[0:len(line)-1].split(",") for line in lines]
 
-    mean = average_string_readings(lines)
-
+    # Initialie data dict
     data = {}
-
     for i in range(0, len(headers)):
         h = headers[i]
         if h == 'density':
             h = 'mdensity'
-        data[h] = mean[i]
+
+        data[h] = []
+
+    for l in lines:
+        for i in range(0, len(headers)):
+            h = headers[i]
+            if h == 'density':
+                h = 'mdensity'
+
+            data[h].append(l[i])
+
     return data
 
 
@@ -78,53 +85,10 @@ def average_string_readings(data):
         if not line == header:
             floatlines.append( [float(l) for l in line] )
 
-    mean = np.mean(floatlines, axis=0)
+    mean = np.mean(floatlines, axis=1)
+    std = np.std(floatlines, axis=1)
 
-    return mean
-
-
-dicts = []
-
-'''
-    dicts = [
-        {'k': z,
-            'weights': [{'G': x, 'TZ': y}],
-            'degree': [{'G': x, 'TZ': y}]
-        },
-        {'vertices': z,
-            'weights': [{'G': x, 'TZ': y}],
-            'degree': [{'G': x, 'TZ': y}]
-        }
-    ]
-'''
-
-def initialize_results_dicts():
-    for k in ks:
-        new_dict = {}
-        new_dict['k'] = k
-
-        dicts.append(new_dict)
-
-    for v in vertices:
-        new_dict = {}
-        new_dict['vertices'] = v
-
-        dicts.append(new_dict)
-
-    for d in densities:
-        new_dict = {}
-        new_dict['density'] = d
-
-        dicts.append(new_dict)
-
-    for d in dicts:
-        for m in measurements:
-            entry = {}
-            for t in filetypes:
-                entry[t] = np.NaN
-            d[m] = entry
-
-
+    return mean, std
 
 def select_dicts_by_meta(meta):
 
@@ -156,72 +120,153 @@ def select_dicts_by_metaword(word):
 
     return return_dicts
 
-def insert_into_dicts(meta, data):
-    idicts = select_dicts_by_meta(meta)
+def select_dicts_by_metaranges(meta, categories=None):
+    v_begin = meta['v_begin']
+    v_end = meta['v_end']
+    k_begin = meta['k_begin']
+    k_end = meta['k_end']
+    d_begin = meta['d_begin']
+    d_end = meta['d_end']
 
-    for d in idicts:
-        for m in measurements:
-            for t in filetypes:
-                d[m][t] = data[t][m]
+    return_dicts = []
 
-def plot_points():
+    for d in datas:
+        if d['k'] >= k_begin and d['k'] <= k_end:
+            if d['vertices'] >= v_begin and d['vertices'] <= v_end:
+                if d['density'] >= d_begin and d['density'] <= d_end:
+
+                    if categories == None:
+                        pp.pprint(d)
+                        return_dicts.append(d)
+                    else:
+                        vals = {'k': d['k'], 'density': d['density'], 'vertices': d['vertices']}
+                        for c in categories:
+                            vals[c] = d[c]
+
+                        return_dicts.append(vals)
+
+    return return_dicts
+
+def get_data(meta, variable, category):
+
+    ds = select_dicts_by_metaranges(meta, categories=[category])
+
+    x = []
+    xs = {'greedy': [], 'tz': []}
+    y = {'greedy': [], 'tz': []}
+    for i in range(0, len(ds)):
+        x.append(ds[i][variable])
+
+        for j in range(0, len(ds[i][category]['greedy'])):
+            xs['greedy'].append(ds[i][variable])
+
+        for j in range(0, len(ds[i][category]['tz'])):
+            xs['tz'].append(ds[i][variable])
+
+        y['greedy'].append(ds[i][category]['greedy'])
+        y['tz'].append(ds[i][category]['tz'])
+
+    return x, xs, y
+
+def normalize_data(y):
+    tmp = []
+    for vals in y['greedy']:
+        tmp.append( [float(v)*100 for v in vals] )
+    y['greedy'] = tmp
+
+    tmp = []
+    for vals in y['tz']:
+        tmp.append( [float(v)*100 for v in vals] )
+    y['tz'] = tmp
+
+    return y
+
+def plot_points(x, xs, y, xlabel, ylabel):
     params = ['k', 'vertices', 'density']
+    print y['greedy'][0][0]
+    if y['greedy'][0][0] < 0.5:
+        y = normalize_data(y)
 
-    for p in params:
-        data = select_dicts_by_metaword(p)
-        for m in measurements:
-            greedy = []
-            tz = []
+    plt.clf()
 
-            for d in data:
-                greedy.append(d[m]['greedy'])
-                tz.append(d[m]['tz'])
+    plt.title(ylabel + " som funktion af " + xlabel)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
 
-            plt.clf()
+    means = {}
+    stds = {}
+    for t in filetypes:
+        means[t], stds[t] = average_string_readings(y[t])
 
-            plt.title(m + " som funktion af " + p)
-            plt.xlabel(p)
-            plt.ylabel(m)
+    #print "means: " + str(means)
+    #print "stddev: ", str(stds)
 
-            if p == 'k':
-                x = ks
-            elif p == 'vertices':
-                x = vertices
-            else:
-                x = densities
+    greedy_point = '#585CFF'
+    greedy_line = '#00049C'
+    greedy_error = '#FF003D'
 
+    tz_point = '#3DFF66'
+    tz_line = '#00B226'
+    tz_error = '#003D0D'
 
-            # Put the datapoints in the back
-            plt.scatter(x, greedy, marker=".", c="#70CC80", label="Greedy datapoints")
-            plt.scatter(x, tz, marker=".", c="#B0C4DE", label="TZ datapoints", )
-
-            # Put in error bars for deviation
-            #plt.errorbar(x, greedy_mean, greedy_dev, linestyle='None', marker='^', c="#809984")
-            #plt.errorbar(x, tz_mean, tz_dev, linestyle='None', marker='^', c="#87CEFA")
-
-            # Put means on top of datapoints
-            #plt.scatter(x, greedy_mean, marker="o", c="#809984", label="Greedy mean with deviation")
-            #plt.scatter(x, tz_mean, marker="o", c="#87CEFA", label="TZ mean with deviation")
-
-            # Finally add the plots on the top layer
-            plt.plot(x, greedy, label='Greedy', c="#809984")
-            plt.plot(x, tz, label='TZ', c="#87CEFA")
-
-            max_greedy = max(greedy)
-            max_tz = max(tz)
-            y_lim = max_greedy if max_tz < max_greedy else max_tz
-
-            #plt.axes([0, int(math.ceil(max(y_lim))), 0, int(math.ceil(max(x)))])
-            plt.legend(fontsize="xx-small")
+    # Put in error bars for deviation
+    plt.errorbar(x, means['greedy'], stds['greedy'], linestyle='None', linewidth=2, marker='^', c=greedy_error)
+    plt.errorbar(x, means['tz'], stds['tz'], linestyle='None', linewidth=2, marker='^', c=tz_error)
 
 
-            plt.savefig("plots/" + p + "_"+ m)
+
+    pp.pprint(y['greedy'])
+
+    # Put the datapoints in the back
+    plt.scatter(xs['greedy'], y['greedy'], marker=".", s=50, c=greedy_point, edgecolor='none', label="Greedy datapoints")
+    plt.scatter(xs['tz'], y['tz'], marker=".", s=50, c=tz_point, edgecolor='none', label="TZ datapoints" )
+
+    # Put means on top of datapoints
+    #plt.scatter(x, means['greedy'], marker="o", s=50, c=greedy_point, label="Greedy mean with deviation")
+    #plt.scatter(x, means['tz'], marker="o", s=50, c=tz_point, label="TZ mean with deviation")
+
+    # Finally add the plots on the top layer
+    plt.plot(x, means['greedy'], label='Greedy mean', c=greedy_line, linewidth=2)
+    plt.plot(x, means['tz'], label='TZ mean', c=tz_line, linewidth=2)
+
+
+    xvals = [float(v) for v in x]
+    x_min = int(min(xvals))
+    x_max = int(max(xvals))
+
+    yvals = []
+    for t in filetypes:
+        for vals in y[t]:
+            for v in vals:
+                yvals.append(float(v))
+
+    y_min = int(min(yvals))
+    y_max = int(max(yvals))
+
+
+    plt.xlim([x_min-1, x_max+1])
+    plt.ylim([y_min, y_max])
+
+    plt.text(x_min-0.5, y_min-0.7, 'n=' + str(len(y['greedy'][0])))
+
+
+    plt.legend(fontsize="xx-small", loc="upper left")
+
+    plt.show()
+
+    plt.savefig("plots/" + ylabel + "_"+ xlabel)
 
 if __name__ == '__main__':
 
-    initialize_results_dicts()
+    #initialize_results_dicts()
 
-    '''
+    filepath = 'data200/'
+    ks = range(2, 10)
+    #vertices = range(25, 125, 25)
+    vertices = range(20, 45, 5)
+    densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+
+    # Insert data into our data dict
     for k in ks:
         for d in densities:
             for v in vertices:
@@ -229,24 +274,32 @@ if __name__ == '__main__':
 
                 filenames = generate_filenames(meta)
                 try:
+                    datadict = {}
+                    datadict['k'] = k
+                    datadict['density'] = d
+                    datadict['vertices'] = v
+
                     data = load_data_from_files(filenames)
-                    insert_into_dicts(meta, data)
+
+                    for m in measurements:
+                        datadict[m] = {'greedy': data['greedy'][m], 'tz': data['tz'][m]}
+
+                    datas.append(datadict)
                 except Exception as e:
                     break
-    '''
-    meta1 = {'density': 0.5, 'vertices': 25, 'k': 2}
-    filenames = generate_filenames(meta1)
-    data1 = load_data_from_files(filenames)
-    insert_into_dicts(meta1, data1)
-
-    meta1 = {'density': 0.6, 'vertices': 25, 'k': 2}
-    filenames = generate_filenames(meta1)
-    data1 = load_data_from_files(filenames)
-    insert_into_dicts(meta1, data1)
 
 
-    ds = select_dicts_by_metaword('density')
 
-    plot_points()
-    #pp.pprint(ds)
-    #pp.pprint(len(ds))
+    meta = {'v_begin': 25, 'v_end': 125, 'k_begin': 4, 'k_end': 4, 'd_begin': 1.0, 'd_end': 1.0}
+
+    params = ['k', 'vertices', 'density']
+    p = params[1]
+    #for m in measurements:
+    m = 'runtime'
+    x, xs, y = get_data(meta, p, m)
+    plot_points(x, xs, y, p, m)
+
+    #x, xs, y = get_data(meta, p, 'runtime')
+
+    #pp = pprint.PrettyPrinter(depth=1)
+    #pp.pprint(y['greedy']*100)
