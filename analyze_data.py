@@ -193,26 +193,26 @@ def plot_points():
 
             # Put the datapoints in the back
             plt.scatter(x, greedy, marker=".", c="#70CC80", label="Greedy datapoints")
-            plt.scatter(x, tz, marker=".", c="lightsteelsky", label="TZ datapoints", )
+            plt.scatter(x, tz, marker=".", c="#B0C4DE", label="TZ datapoints", )
 
             # Put in error bars for deviation
-            plt.errorbar(x, greedy_mean, greedy_dev, linestyle='None', marker='^', c="#809984")
-            plt.errorbar(x, tz_mean, tz_dev, linestyle='None', marker='^', c="lightbluesky")
+            #plt.errorbar(x, greedy_mean, greedy_dev, linestyle='None', marker='^', c="#809984")
+            #plt.errorbar(x, tz_mean, tz_dev, linestyle='None', marker='^', c="#87CEFA")
 
             # Put means on top of datapoints
-            plt.scatter(x, greedy_mean, marker="o", c="#809984", label="Greedy mean with deviation")
-            plt.scatter(x, tz_mean, marker="o", c="lightbluesky", label="TZ mean with deviation")
+            #plt.scatter(x, greedy_mean, marker="o", c="#809984", label="Greedy mean with deviation")
+            #plt.scatter(x, tz_mean, marker="o", c="#87CEFA", label="TZ mean with deviation")
 
             # Finally add the plots on the top layer
             plt.plot(x, greedy, label='Greedy', c="#809984")
-            plt.plot(x, tz, label='TZ', c="lightbluesky")
+            plt.plot(x, tz, label='TZ', c="#87CEFA")
 
             max_greedy = max(greedy)
             max_tz = max(tz)
             y_lim = max_greedy if max_tz < max_greedy else max_tz
 
             #plt.axes([0, int(math.ceil(max(y_lim))), 0, int(math.ceil(max(x)))])
-            plt.legend()
+            plt.legend(fontsize="xx-small")
 
 
             plt.savefig("plots/" + p + "_"+ m)
