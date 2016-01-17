@@ -203,7 +203,7 @@ def normalize_data(y):
 
     return new_y
 
-def plot_points(x, xs, y, xlabel, ylabel):
+def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     params = ['k', 'vertices', 'density']
 
     if float(y['greedy'][0][0]) < 0.1:
@@ -211,7 +211,11 @@ def plot_points(x, xs, y, xlabel, ylabel):
 
     plt.clf()
 
-    plt.title(ylabel + " som funktion af " + xlabel)
+    if title == None:
+        plt.title(ylabel + " som funktion af " + xlabel)
+    else:
+        plt.title(title)
+
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
 
@@ -249,8 +253,8 @@ def plot_points(x, xs, y, xlabel, ylabel):
 
 
     xvals = [float(v) for v in x]
-    x_min = int(min(xvals))
-    x_max = int(max(xvals))
+    x_min = min(x)
+    x_max = max(xvals)
 
     yvals = []
     for t in filetypes:
@@ -258,11 +262,11 @@ def plot_points(x, xs, y, xlabel, ylabel):
             for v in vals:
                 yvals.append(float(v))
 
-    y_min = int(min(yvals))
-    y_max = int(max(yvals))
+    y_min = min(yvals)
+    y_max = max(yvals)
 
 
-    plt.xlim([x_min-1, x_max+1])
+    plt.xlim([x_min-0.1, x_max+0.1])
     plt.ylim([y_min, y_max])
 
     plt.text(x_min-0.5, y_min-0.7, 'n=' + str(len(y['greedy'][0])))
@@ -271,23 +275,33 @@ def plot_points(x, xs, y, xlabel, ylabel):
     plt.legend(fontsize="xx-small", loc="upper left")
 
     #plt.show()
+    if xlabel == 'density':
+        xlabel = 'densities'
 
-    plt.savefig("plots/" + ylabel + "_"+ xlabel)
+    if meta[xlabel][0] != meta[xlabel][1]:
+        plt.savefig('plots/' + filename)
+    #plt.savefig("plots/" + ylabel + "_"+ xlabel)
 
 if __name__ == '__main__':
 
     # Select data source
     filepath = 'data200/'
     # Select data ranges (to be plotted)
-    meta = {'vertices': [25, 125], 'k': [4, 4], 'densities': [1.0, 1.0]}
+
 
     ## NO MORE SETUP
     insert_data()
 
+    vs = range(25,45,5)
+
     params = ['k', 'vertices', 'density']
-    p = params[1]
-    for m in measurements:
-        x, xs, y = get_data(meta, p, m)
-        plot_points(x, xs, y, p, m)
+    for p in params:
+        for m in measurements:
+            for v in vs:
+                for k in [2,3,4]:
+                    meta = {'vertices': [v,v], 'k': [k,k], 'densities': [0.5, 1.0]}
+                    filename = m + '_' + p + '_k_' + str(k) + '_v_' + str(v)
+                    x, xs, y = get_data(meta, p, m)
+                    plot_points(x, xs, y, p, m, filename)
 
     print "DING! Fries are done."
