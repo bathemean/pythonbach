@@ -268,7 +268,7 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
 
 
     plt.xlim([x_min-0.1, x_max+0.1])
-    plt.ylim([y_min, y_max])
+    plt.ylim([y_min-1, y_max+1])
 
     plt.legend(fontsize="xx-small", loc="upper left")
 
@@ -291,29 +291,31 @@ def plot_worstcase(plt,x,y):
 if __name__ == '__main__':
 
     # Select data source
-    filepath = 'data200/'
+    filepath = 'data/'
     # Select data ranges (to be plotted)
 
 
     ## NO MORE SETUP
     insert_data()
 
-    vs = range(25,30,5)
+    vs = range(25,45,5)
 
     params = ['k', 'vertices', 'density']
     for p in params:
         for m in measurements:
-            for v in vs:
-                for k in [2]:
-                    meta = {'vertices': [v,v], 'k': [2,4], 'densities': [0.5, 0.5]}
-                    filename = m + '_' + p + '_k_' + str(k) + '_v_' + str(v)
+            #for v in vs:
+            for d in [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
+                for k in range(2,10):
+                    meta = {'vertices': [10,35], 'k': [k,k], 'densities': [d,d]}
+                    filename = m + '_' + p + '_d_' + str(d)[0]+str(d)[2] + '_k_' + str(k)
+                    #filename = m + '_' + p + '_k_' + str(k) + '_v_' + str(v)
                     x, xs, y = get_data(meta, p, m)
 
                     plt = plot_points(x, xs, y, p, m, filename)
 
-                    if p == params[0] and m == 'stretch':
-                        wcy = [(2*z-1) for z in range(meta['k'][0], meta['k'][1]+1)]
-                        plot_worstcase(plt, x, wcy)
+                    #if p == params[0] and m == 'stretch':
+                        #wcy = [(2*z-1) for z in range(meta['k'][0], meta['k'][1]+1)]
+                        #plot_worstcase(plt, x, wcy)
 
 
 
