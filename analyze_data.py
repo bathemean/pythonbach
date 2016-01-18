@@ -69,8 +69,7 @@ def load_data_from_file(filename):
             h = headers[i]
             if h == 'density':
                 h = 'mdensity'
-
-            if filename[0:4] == "graph" and i in [3, 4]:
+            if filename[0:10] == "data/graph" and i in [3, 4]:
                 data[h].append(0)
             else:
                 data[h].append(l[i])
@@ -99,7 +98,7 @@ def insert_data():
                     data = load_data_from_files(filenames)
 
                     for m in measurements:
-                        datadict[m] = {'greedy': data['greedy'][m], 'tz': data['tz'][m]}
+                        datadict[m] = {'greedy': data['greedy'][m], 'tz': data['tz'][m], 'graph': data['graph'][m]}
 
                     datas.append(datadict)
                 except Exception as e:
@@ -177,6 +176,10 @@ def normalize_data(y):
         tmp.append( [float(v)*100 for v in vals] )
     new_y['tz'] = tmp
 
+    for vals in y['graph']:
+        tmp.append( [float(v)*100 for v in vals] )
+    new_y['graph'] = tmp
+
     return new_y
 
 def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
@@ -211,12 +214,19 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     tz_line = '#00B226'
     tz_error = '#003D0D'
 
+    graph_line = "FF4411"
+
     # Put in error bars for deviation
+    print len(x), means['tz']
+    print ylabel, xlabel
     plt.errorbar(x, means['greedy'], stds['greedy'], linestyle='None', linewidth=2, marker='^', c=greedy_error)
     plt.errorbar(x, means['tz'], stds['tz'], linestyle='None', linewidth=2, marker='^', c=tz_error)
 
     # Put the datapoints in the back
+    print len(xs['greedy']), len(y['greedy'])
+
     plt.scatter(xs['greedy'], y['greedy'], marker=".", s=50, c=greedy_point, edgecolor='none', label="Greedy datapoints")
+    print len(xs['tz']), len(y['tz'])
     plt.scatter(xs['tz'], y['tz'], marker=".", s=50, c=tz_point, edgecolor='none', label="TZ datapoints" )
 
     # Put means on top of datapoints
@@ -226,6 +236,7 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     # Finally add the plots on the top layer
     plt.plot(x, means['greedy'], label='Greedy mean', c=greedy_line, linewidth=2)
     plt.plot(x, means['tz'], label='TZ mean', c=tz_line, linewidth=2)
+    plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
 
     # Gridline, so pwetty
     plt.grid(b=True, which='major', axis='y', c="grey")
@@ -271,16 +282,14 @@ if __name__ == '__main__':
     insert_data()
 
     vs = range(10,20,5)
-
     params = ['k', 'vertices', 'density']
     for p in params:
         for m in measurements:
-            for k in [2,3,4]:
+            for k in [2,3,4,5,6,7,8,9]:
                 for d in [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
-                    meta = {'vertices': [25,30], 'k': [k,k], 'densities': [d,d]}
+                    meta = {'vertices': [10,40], 'k': [k,k], 'densities': [d,d]}
                     filename = m + '_' + p + '_d_' + str(d).replace(".", "_") + '_k_' + str(k)
                     x, xs, y = get_data(meta, p, m)
-                    print y
-                    plot_points(x, xs, y, p, m, filename)
+                    plot_points(x, xs, y, p, m, filename, p + " som funktion af " + m + "d=" + str(d) + ", k=" + str(k))
 
     print "DING! Fries are done."
