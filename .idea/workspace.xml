@@ -2,233 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f6b1cf4-9014-475e-9ff2-a505cd611927" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_2_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_2_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_2_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_2_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_2_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_2_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_3_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_3_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_3_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_3_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_3_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_3_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_4_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_4_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_4_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_4_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_density_k_4_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_density_k_4_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_5_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_5_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_5_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_5_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_5_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_5_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_6_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_6_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_6_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_6_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_6_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_6_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_7_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_7_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_7_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_7_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_7_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_7_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_8_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_8_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_8_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_8_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_8_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_8_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_9_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_9_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_9_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_9_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_0_9_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_0_9_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_1_0_v_25.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_1_0_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_1_0_v_30.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_1_0_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_k_d_1_0_v_35.png" afterPath="$PROJECT_DIR$/oldplots/degree_k_d_1_0_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_5_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_5_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_5_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_5_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_5_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_5_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_6_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_6_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_6_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_6_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_6_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_6_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_7_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_7_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_7_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_7_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_7_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_7_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_8_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_8_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_8_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_8_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_8_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_8_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_9_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_9_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_9_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_9_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_0_9_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_0_9_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_1_0_k_2.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_1_0_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_1_0_k_3.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_1_0_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/degree_vertices_d_1_0_k_4.png" afterPath="$PROJECT_DIR$/oldplots/degree_vertices_d_1_0_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_2_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_2_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_2_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_2_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_2_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_2_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_3_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_3_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_3_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_3_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_3_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_3_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_4_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_4_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_4_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_4_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_density_k_4_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_density_k_4_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_5_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_5_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_5_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_5_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_5_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_5_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_6_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_6_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_6_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_6_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_6_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_6_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_7_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_7_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_7_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_7_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_7_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_7_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_8_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_8_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_8_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_8_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_8_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_8_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_9_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_9_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_9_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_9_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_0_9_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_0_9_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_1_0_v_25.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_1_0_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_1_0_v_30.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_1_0_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_k_d_1_0_v_35.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_k_d_1_0_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_5_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_5_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_5_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_5_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_5_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_5_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_6_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_6_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_6_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_6_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_6_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_6_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_7_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_7_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_7_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_7_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_7_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_7_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_8_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_8_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_8_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_8_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_8_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_8_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_9_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_9_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_9_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_9_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_0_9_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_0_9_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_1_0_k_2.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_1_0_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_1_0_k_3.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_1_0_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/mdensity_vertices_d_1_0_k_4.png" afterPath="$PROJECT_DIR$/oldplots/mdensity_vertices_d_1_0_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_2_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_2_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_2_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_2_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_2_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_2_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_3_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_3_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_3_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_3_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_3_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_3_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_4_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_4_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_4_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_4_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_density_k_4_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_density_k_4_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_5_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_5_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_5_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_5_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_5_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_5_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_6_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_6_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_6_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_6_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_6_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_6_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_7_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_7_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_7_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_7_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_7_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_7_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_8_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_8_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_8_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_8_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_8_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_8_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_9_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_9_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_9_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_9_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_0_9_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_0_9_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_1_0_v_25.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_1_0_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_1_0_v_30.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_1_0_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_k_d_1_0_v_35.png" afterPath="$PROJECT_DIR$/oldplots/runtime_k_d_1_0_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_5_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_5_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_5_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_5_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_5_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_5_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_6_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_6_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_6_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_6_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_6_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_6_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_7_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_7_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_7_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_7_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_7_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_7_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_8_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_8_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_8_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_8_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_8_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_8_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_9_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_9_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_9_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_9_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_0_9_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_0_9_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_1_0_k_2.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_1_0_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_1_0_k_3.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_1_0_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/runtime_vertices_d_1_0_k_4.png" afterPath="$PROJECT_DIR$/oldplots/runtime_vertices_d_1_0_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_2_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_2_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_2_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_2_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_2_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_2_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_3_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_3_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_3_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_3_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_3_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_3_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_4_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_4_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_4_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_4_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_density_k_4_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_density_k_4_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_5_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_5_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_5_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_5_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_5_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_5_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_6_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_6_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_6_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_6_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_6_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_6_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_7_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_7_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_7_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_7_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_7_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_7_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_8_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_8_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_8_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_8_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_8_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_8_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_9_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_9_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_9_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_9_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_0_9_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_0_9_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_1_0_v_25.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_1_0_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_1_0_v_30.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_1_0_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_k_d_1_0_v_35.png" afterPath="$PROJECT_DIR$/oldplots/stretch_k_d_1_0_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_5_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_5_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_5_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_5_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_5_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_5_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_6_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_6_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_6_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_6_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_6_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_6_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_7_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_7_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_7_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_7_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_7_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_7_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_8_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_8_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_8_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_8_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_8_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_8_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_9_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_9_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_9_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_9_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_0_9_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_0_9_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_1_0_k_2.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_1_0_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_1_0_k_3.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_1_0_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/stretch_vertices_d_1_0_k_4.png" afterPath="$PROJECT_DIR$/oldplots/stretch_vertices_d_1_0_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_2_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_2_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_2_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_2_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_2_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_2_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_3_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_3_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_3_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_3_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_3_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_3_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_4_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_4_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_4_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_4_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_density_k_4_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_density_k_4_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_5_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_5_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_5_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_5_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_5_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_5_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_6_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_6_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_6_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_6_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_6_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_6_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_7_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_7_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_7_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_7_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_7_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_7_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_8_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_8_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_8_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_8_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_8_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_8_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_9_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_9_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_9_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_9_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_0_9_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_0_9_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_1_0_v_25.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_1_0_v_25.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_1_0_v_30.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_1_0_v_30.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_k_d_1_0_v_35.png" afterPath="$PROJECT_DIR$/oldplots/weight_k_d_1_0_v_35.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_5_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_5_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_5_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_5_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_5_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_5_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_6_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_6_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_6_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_6_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_6_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_6_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_7_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_7_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_7_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_7_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_7_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_7_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_8_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_8_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_8_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_8_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_8_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_8_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_9_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_9_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_9_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_9_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_0_9_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_0_9_k_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_1_0_k_2.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_1_0_k_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_1_0_k_3.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_1_0_k_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/plots/weight_vertices_d_1_0_k_4.png" afterPath="$PROJECT_DIR$/oldplots/weight_vertices_d_1_0_k_4.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analyze_data.py" afterPath="$PROJECT_DIR$/analyze_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pythonbach.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -257,8 +31,8 @@
       <file leaf-file-name="analyze_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analyze_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70225567">
-              <caret line="290" column="94" selection-start-line="290" selection-start-column="94" selection-end-line="290" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.59398496">
+              <caret line="235" column="59" selection-start-line="235" selection-start-column="59" selection-end-line="235" selection-end-column="59" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -707,8 +481,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70225567">
-          <caret line="290" column="94" selection-start-line="290" selection-start-column="94" selection-end-line="290" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.59398496">
+          <caret line="235" column="59" selection-start-line="235" selection-start-column="59" selection-end-line="235" selection-end-column="59" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

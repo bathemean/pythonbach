@@ -217,16 +217,12 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     graph_line = "FF4411"
 
     # Put in error bars for deviation
-    print len(x), means['tz']
-    print ylabel, xlabel
     plt.errorbar(x, means['greedy'], stds['greedy'], linestyle='None', linewidth=2, marker='^', c=greedy_error)
     plt.errorbar(x, means['tz'], stds['tz'], linestyle='None', linewidth=2, marker='^', c=tz_error)
 
     # Put the datapoints in the back
-    print len(xs['greedy']), len(y['greedy'])
 
     plt.scatter(xs['greedy'], y['greedy'], marker=".", s=50, c=greedy_point, edgecolor='none', label="Greedy datapoints")
-    print len(xs['tz']), len(y['tz'])
     plt.scatter(xs['tz'], y['tz'], marker=".", s=50, c=tz_point, edgecolor='none', label="TZ datapoints" )
 
     # Put means on top of datapoints
@@ -236,7 +232,16 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     # Finally add the plots on the top layer
     plt.plot(x, means['greedy'], label='Greedy mean', c=greedy_line, linewidth=2)
     plt.plot(x, means['tz'], label='TZ mean', c=tz_line, linewidth=2)
-    plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
+
+    # Worst-case inserter, dunno how it should work yet tho
+    if xlabel == "runtime":
+        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
+    elif xlabel == "density" and ylabel == "yolo":
+        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
+    elif xlabel == "k" and ylabel == "stretch":
+        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
+    else:
+        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
 
     # Gridline, so pwetty
     plt.grid(b=True, which='major', axis='y', c="grey")
