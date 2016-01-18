@@ -16,6 +16,8 @@ def run_experiments(ks):
     for v in vertices:
         for k in ks:
             for d in densities:
+                k = 20
+                v = 20
                 print " == Running experiments for vertices: " + str(v) + ", k: " + str(k) + ", d: " + str(d) + ". =="
 
                 write_to_log('tz', v, d, k, headers)
@@ -79,10 +81,17 @@ def write_to_status_log(log_string):
     pass
 
 if __name__ == '__main__':
+<<<<<<< Updated upstream
     #kargs = sys.argv[1:]
     #ks = [ks[0], ks[1], ks[2]]
     #ks = [int(k) for k in ks]
     
+=======
+    kargs = sys.argv[1:]
+    ks = [ks[0], ks[1], ks[2]]
+    ks = [int(k) for k in ks]
+
+>>>>>>> Stashed changes
     run_experiments(ks)
 
     #G = GraphGen(200, 1.0, True).get_graph()

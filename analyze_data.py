@@ -7,7 +7,7 @@ pp = pprint.PrettyPrinter(depth=6)
 
 
 
-filetypes = ['tz', 'greedy', 'graph']
+filetypes = ['tz', 'greedy']
 filemetas = ['_density', '_vertices', '_k']
 
 #measurements = ['density', 'weight', 'highest degree', 'runtime']
@@ -41,21 +41,21 @@ def load_data_from_files(filenames):
 
 
 def load_data_from_file(filename):
+
     datafile = open(filename, 'r')
+
     if os.path.getsize(filename) == 0:
         raise Exception("File empty")
 
     headers = datafile.readline()
-
     # Remove trailing newline, and split string into a list over commas
     headers = headers[0:len(headers)-1].split(',')
 
     lines = datafile.readlines()
-
     # Remove trailing newline, and split string into a list over commas
     lines = [ line[0:len(line)-1].split(",") for line in lines]
 
-    # Initialize data dict
+    # Initialie data dict
     data = {}
     for i in range(0, len(headers)):
         h = headers[i]
@@ -69,16 +69,15 @@ def load_data_from_file(filename):
             h = headers[i]
             if h == 'density':
                 h = 'mdensity'
-            if filename[0:10] == "data/graph" and i in [3, 4]:
-                data[h].append(0)
-            else:
-                data[h].append(l[i])
+
+            data[h].append(l[i])
+
     return data
 
 datas = []
 def insert_data():
 
-    ks = range(2, 10)
+    ks = range(2, 20)
     vertices = range(25, 125, 5)
     densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 
@@ -98,7 +97,7 @@ def insert_data():
                     data = load_data_from_files(filenames)
 
                     for m in measurements:
-                        datadict[m] = {'greedy': data['greedy'][m], 'tz': data['tz'][m], 'graph': data['graph'][m]}
+                        datadict[m] = {'greedy': data['greedy'][m], 'tz': data['tz'][m]}
 
                     datas.append(datadict)
                 except Exception as e:
@@ -118,11 +117,41 @@ def average_string_readings(data):
 
     return mean, std
 
+def select_dicts_by_meta(meta):
+
+    density = meta['density']
+    vertices = meta['vertices']
+    k = meta['k']
+
+    return_dicts = []
+
+    for d in dicts:
+        if 'k' in d and d['k'] == k:
+            return_dicts.append(d)
+
+        if 'vertices' in d and d['vertices'] == vertices:
+            return_dicts.append(d)
+
+        if 'density' in d and d['density'] == density:
+            return_dicts.append(d)
+
+    return return_dicts
+
+def select_dicts_by_metaword(word):
+
+    return_dicts = []
+
+    for d in dicts:
+        if word in d:
+            return_dicts.append(d)
+
+    return return_dicts
 
 def select_dicts_by_metaranges(meta, category=None):
     k = meta['k']
     densities = meta['densities']
     vertices = meta['vertices']
+
     return_dicts = []
 
     for d in datas:
@@ -132,7 +161,6 @@ def select_dicts_by_metaranges(meta, category=None):
 
                     if category == None:
                         return_dicts.append(d)
-
                     else:
                         vals = {'k': d['k'], 'density': d['density'], 'vertices': d['vertices']}
                         vals[category] = d[category]
@@ -143,9 +171,10 @@ def select_dicts_by_metaranges(meta, category=None):
 def get_data(meta, variable, category):
 
     ds = select_dicts_by_metaranges(meta, category=category)
+
     x = []
-    xs = {'greedy': [], 'tz': [], 'graph': []}
-    y = {'greedy': [], 'tz': [], 'graph': []}
+    xs = {'greedy': [], 'tz': []}
+    y = {'greedy': [], 'tz': []}
     for i in range(0, len(ds)):
         x.append(ds[i][variable])
 
@@ -155,12 +184,8 @@ def get_data(meta, variable, category):
         for j in range(0, len(ds[i][category]['tz'])):
             xs['tz'].append(ds[i][variable])
 
-        for j in range(0, len(ds[i][category]['graph'])):
-            xs['graph'].append(ds[i][variable])
-
         y['greedy'].append(ds[i][category]['greedy'])
         y['tz'].append(ds[i][category]['tz'])
-        y['graph'].append(ds[i][category]['graph'])
 
     return x, xs, y
 
@@ -175,10 +200,6 @@ def normalize_data(y):
     for vals in y['tz']:
         tmp.append( [float(v)*100 for v in vals] )
     new_y['tz'] = tmp
-
-    for vals in y['graph']:
-        tmp.append( [float(v)*100 for v in vals] )
-    new_y['graph'] = tmp
 
     return new_y
 
@@ -214,14 +235,11 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     tz_line = '#00B226'
     tz_error = '#003D0D'
 
-    graph_line = "FF4411"
-
     # Put in error bars for deviation
     plt.errorbar(x, means['greedy'], stds['greedy'], linestyle='None', linewidth=2, marker='^', c=greedy_error)
     plt.errorbar(x, means['tz'], stds['tz'], linestyle='None', linewidth=2, marker='^', c=tz_error)
 
     # Put the datapoints in the back
-
     plt.scatter(xs['greedy'], y['greedy'], marker=".", s=50, c=greedy_point, edgecolor='none', label="Greedy datapoints")
     plt.scatter(xs['tz'], y['tz'], marker=".", s=50, c=tz_point, edgecolor='none', label="TZ datapoints" )
 
@@ -233,18 +251,7 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     plt.plot(x, means['greedy'], label='Greedy mean', c=greedy_line, linewidth=2)
     plt.plot(x, means['tz'], label='TZ mean', c=tz_line, linewidth=2)
 
-    # Worst-case inserter, dunno how it should work yet tho
-    if xlabel == "runtime":
-        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
-    elif xlabel == "density" and ylabel == "yolo":
-        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
-    elif xlabel == "k" and ylabel == "stretch":
-        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
-    else:
-        plt.plot(x, means['graph'], label='Graph mean', c=graph_line, linewidth=2)
 
-    # Gridline, so pwetty
-    plt.grid(b=True, which='major', axis='y', c="grey")
 
     xvals = [float(v) for v in x]
     x_min = min(x)
@@ -261,10 +268,7 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
 
 
     plt.xlim([x_min-0.1, x_max+0.1])
-    plt.ylim([y_min-0.5, y_max+0.5])
-
-    plt.text(x_min-0.5, y_min-0.7, 'n=' + str(len(y['greedy'][0])))
-
+    plt.ylim([y_min, y_max])
 
     plt.legend(fontsize="xx-small", loc="upper left")
 
@@ -275,26 +279,43 @@ def plot_points(x, xs, y, xlabel, ylabel, filename, title=None):
     if meta[xlabel][0] != meta[xlabel][1]:
         plt.savefig('plots/' + filename)
     #plt.savefig("plots/" + ylabel + "_"+ xlabel)
+    return plt
+
+def plot_worstcase(plt,x,y):
+
+    # Plot the worst case line
+    plt.plot(x,wcy, label='Worst case', c='#FF0000')
+    plt.legend(fontsize="xx-small", loc="upper left")
+    plt.show()
 
 if __name__ == '__main__':
 
     # Select data source
-    filepath = 'data/'
+    filepath = 'data200/'
     # Select data ranges (to be plotted)
 
 
     ## NO MORE SETUP
     insert_data()
 
-    vs = range(10,20,5)
+    vs = range(25,30,5)
+
     params = ['k', 'vertices', 'density']
     for p in params:
         for m in measurements:
-            for k in [2,3,4,5,6,7,8,9]:
-                for d in [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
-                    meta = {'vertices': [10,40], 'k': [k,k], 'densities': [d,d]}
-                    filename = m + '_' + p + '_d_' + str(d).replace(".", "_") + '_k_' + str(k)
+            for v in vs:
+                for k in [2]:
+                    meta = {'vertices': [v,v], 'k': [2,4], 'densities': [0.5, 0.5]}
+                    filename = m + '_' + p + '_k_' + str(k) + '_v_' + str(v)
                     x, xs, y = get_data(meta, p, m)
-                    plot_points(x, xs, y, p, m, filename, p + " som funktion af " + m + "d=" + str(d) + ", k=" + str(k))
+
+                    plt = plot_points(x, xs, y, p, m, filename)
+
+                    if p == params[0] and m == 'stretch':
+                        wcy = [(2*z-1) for z in range(meta['k'][0], meta['k'][1]+1)]
+                        plot_worstcase(plt, x, wcy)
+
+
+
 
     print "DING! Fries are done."
