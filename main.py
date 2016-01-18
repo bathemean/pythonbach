@@ -6,7 +6,8 @@ from ThorupZwick import ThorupZwick
 import time
 
 headers = 'weight,density,degree,runtime,stretch'
-vertices = range(25, 1425, 25)
+graph_header = 'weight,density,degree'
+vertices = range(10, 50, 5)
 densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 ks = range(2,10)
 
@@ -19,24 +20,27 @@ def run_experiments(ks):
 
                 write_to_log('tz', v, d, k, headers)
                 write_to_log('greedy', v, d, k, headers)
+                write_to_log('graph', v, d, k, headers)
 
-                itera = range(0, 10)
+                itera = range(0, 200)
                 for ite in itera:
                     graph = GraphGen(v, d, True).get_graph()
                     try:
                         matrics, tz = run_tz(graph, k)
                     except KeyError:
                         itera.insert(0, ite)
-                        print "Retrying TZ"
+                        #print "Retrying TZ"
                         continue
                     write_to_log('tz', v, d, k, matrics)
-                    print "TZ: " + matrics
+                    #print "TZ: " + matrics
                     # Greedy in bottom, so it's only run when TZ is run/not failing
                     if v < 450:
 
                         grd = run_greedy(graph, k)
                         write_to_log('greedy', v, d, k, grd)
-                        print "Greedy: " + grd
+                        #print "Greedy: " + grd
+                    g_matrics = ",".join([graph.get_cum_weight().__str__(), graph.get_density().__str__(), graph.get_highest_degree().__str__()])
+                    write_to_log("graph", v, d, k, g_matrics)
 
 
 def run_greedy(graph, k):
@@ -75,9 +79,9 @@ def write_to_status_log(log_string):
     pass
 
 if __name__ == '__main__':
-    kargs = sys.argv[1:]
-    ks = [ks[0], ks[1], ks[2]]
-    ks = [int(k) for k in ks]
+    #kargs = sys.argv[1:]
+    #ks = [ks[0], ks[1], ks[2]]
+    #ks = [int(k) for k in ks]
     
     run_experiments(ks)
 
