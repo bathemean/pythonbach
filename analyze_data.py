@@ -78,7 +78,7 @@ datas = []
 def insert_data():
 
     ks = range(2, 20)
-    vertices = range(25, 125, 5)
+    vertices = range(10, 125, 5)
     densities = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 
     # Insert data into our data dict
@@ -298,15 +298,14 @@ if __name__ == '__main__':
     ## NO MORE SETUP
     insert_data()
 
-    vs = range(25,45,5)
+    vs = range(10,40,5)
 
     params = ['k', 'vertices', 'density']
     for p in params:
         for m in measurements:
-            #for v in vs:
             for d in [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]:
                 for k in range(2,10):
-                    meta = {'vertices': [10,35], 'k': [k,k], 'densities': [d,d]}
+                    meta = {'vertices': [10,40], 'k': [k,k], 'densities': [d,d]}
                     filename = m + '_' + p + '_d_' + str(d)[0]+str(d)[2] + '_k_' + str(k)
                     #filename = m + '_' + p + '_k_' + str(k) + '_v_' + str(v)
                     x, xs, y = get_data(meta, p, m)
